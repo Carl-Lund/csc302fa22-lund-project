@@ -6,7 +6,9 @@ UpLift is a website where users can sign into their accounts to create and share
 The recipes created have a specific focus on helping an individual in their fitness journey. So recipes
 can be anything from low calorie high protein meals to help people lose weight but keep muscle to meals
 that have thousands of calories for those who are trying to put weight on. There really is no limit to
-what a user can create. Users can upvote and downvote posts or comment on them if they like. 
+what a user can create. Users can upvote and downvote posts or comment on them if they like.
+
+Link to project live on digdug: https://digdug.cs.endicott.edu/~clund/csc302fa22-lund-project/src/pages/signin.html
 
 # File Hierarchy:
  - src
