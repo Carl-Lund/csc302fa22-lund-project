@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UpLift Signup</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <style>
+        h1, form, p {
+            text-align: center;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#password-mismatch-error').hide()
+            $(document).on('submit', '#signup-form', function(event){
+                var serverData = {
+                    'username': this['username'].value,
+                    'password': this['password'].value
+                };
+
+                console.log(serverData);
+
+                $('#password-mismatch-error').hide()
+                if(this['password'].value !== this['password2'].value){
+                    $('#password-mismatch-error').show();
+                    event.preventDefault();
+                    return;
+                }
+
+                $.ajax('/users', {
+                    method: 'POST',
+                    data: serverData,
+                    success: function(responseData){
+                        window.location.href = 'signin.html';
+                    },
+                    error: function(xhr, status, msg){
+                        alert(`Error: ${status} ${msg}: ${xhr.responseJSON.error}`);
+                    }
+                })
+                event.preventDefault();
+            });
+
+        });
+    </script>
+
+</head>
+
+
+<body>
+    <!-- Header -->
+    <header class="clearfix">
+        <h1>UpLift</h1>
+        <img src="../images/barbell.png" alt="Barbell Image">
+    </header>
+
+    <h1>Signup</h1>
+    <form id="signup-form">
+        <label for="username">Username:</label><br>
+        <input type="text" name="username"/><br/>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password"/><br/>
+
+        <div id="password-mismatch-error" class="error">Oh no, your passwords don't match!</div>
+        <label for="password">Password (again):</label><br>
+        <input type="password" name="password2"/><br/>
+        <input type="submit" value="Signup!"/>
+    </form>
+
+    <p>Already have an account? <a class="link-color" href="signin.html">Sign in here</a>!</p>
+
+</body>
+</html>

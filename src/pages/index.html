@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Page</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // // Redirect the user to sign in if they aren't already signed in.
+            // if (localStorage.getItem('username') === null){
+            //     window.location.href = 'signin.html';
+            // }
+
+            $("#header-nav-placeholder").load("header-navbar.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header-nav-placeholder"></div>
+</body>
+</html>
